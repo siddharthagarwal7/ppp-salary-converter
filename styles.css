@@ -1,0 +1,62 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-color: darkcyan;
+    color: lightcyan;
+}
+
+.main-heading {
+    text-align: center;
+    padding: 50px;
+    padding-bottom: 0px;
+    font-weight: normal;
+    font-size: 300%;
+}
+
+.sub-heading {
+    text-align: center;
+    padding: 20px 30px 30px 30px;
+    font-size: 150%;
+}
+
+.content {
+    padding: 30px;
+    padding-top: 20px;
+    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(218, 215, 215);
+    width: 500px;
+
+}
+
+.source-country, .salary, .target-country, .output {
+    padding: 10px;
+    font-size: large;
+}
+
+select {
+    width: 410px;
+    height: 40px;
+    font-size: medium;
+    margin-top: 7px;
+    padding: 4px;
+}
+
+input {
+    width: 400px;
+    height: 30px;
+    font-size: medium;
+    margin-top: 7px;
+    padding: 4px;
+}
+
+.learn-more {
+    padding: 20px;
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
