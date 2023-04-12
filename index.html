@@ -1,22 +1,28 @@
+<!-- This is an HTML file that defines the structure and content of a web page that converts salary between different currencies using PPP -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- The meta tags define the character set, rendering engine compatibility, and initial zoom level of the page -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- This link tag references an external CSS file that contains styling information for the page -->
   <link rel="stylesheet" href="styles.css">
+  <!-- The title tag sets the title of the page as it appears in the browser tab -->
   <title>PPP Salary Converter</title>
 </head>
 
 <body>
+  <!-- The following div contains the header section of the page -->
   <div class="header">
     <p class="main-heading">Purchasing Power Parity Salary Converter</p>
     <p class="sub-heading">Convert your salary from one currency to another using PPP</p>
   </div>
-
+  <!-- The following div contains the main content of the page -->
   <div class="content">
     <section class="inputs">
+      <!-- The following div contains the input fields for selecting the source country and the destination country for the currency conversion -->
       <div class="source-country">
         <label for="source-country">Source Country</label><br>
         <select id="source-country" name="sourcecountry">
@@ -544,57 +550,20 @@
 
       <div class="output">
         <label for="output">Output</label><br>
+        <!-- The input tag creates a disabled text box for displaying the converted salary amount -->
         <input type="text" disabled id="output">
       </div>
     </section>
   </div>
-
+  <!-- The following div contains the information section of the page -->
   <div class="info">
     <p class="learn-more">Read more about PPP and how it's calcuated here: <a
         href="https://www.oecd.org/sdd/prices-ppp/purchasingpowerparities-frequentlyaskedquestionsfaqs.htm#FAQ2"
         target="_blank">PPP
         FAQs at OECD</a></p>
   </div>
+  <!-- The following script tag includes a JavaScript file that defines the logic for updating the output field with the converted salary amount -->
+  <script src="main.js"></script>
 </body>
-
-<script>
-  var fromCountry = document.getElementById('source-country');
-  var toCountry = document.getElementById('target-country');
-  var salary = document.getElementById('salary');
-  var output = document.getElementById('output');
-
-  const API_KEY = "f1c896024db89e75d43930de";
-
-
-  var convertedData = async () => {
-    const res = await fetch('final.json');
-    const dataJson = await res.json();
-
-    const toCurrency = dataJson[toCountry.value.toLowerCase()]["currency_code"];
-    const fromCurrency = dataJson[fromCountry.value.toLowerCase()]["currency_code"];
-
-    const CURRENCY_URL_TO = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/USD/${toCurrency}`;
-    const CURRENCY_URL_FROM = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/USD/${fromCurrency}`;
-
-    const promises = [fetch(CURRENCY_URL_TO).then(res => res.json()), fetch(CURRENCY_URL_FROM).then(res => res.json())];
-    const resps = await Promise.all(promises)
-
-    const rateTo = resps[0].conversion_rate;
-    const rateFrom = resps[1].conversion_rate;
-    const direct = rateTo / rateFrom;
-    const factor =
-      dataJson[toCountry.value.toLowerCase()]["PPP"] /
-      dataJson[fromCountry.value.toLowerCase()]["PPP"] /
-      direct;
-    const newSalary = salary.value * factor * direct;
-
-    output.value = newSalary
-
-  }
-
-  salary.addEventListener('keydown', (e) => {
-    if (e.code === "Enter") convertedData();
-  });
-</script>
 
 </html>

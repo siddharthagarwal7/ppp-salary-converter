@@ -1,14 +1,18 @@
+/* This code sets initial styles for all HTML elements,
+including zero margin and padding, and uses the Arial, Helvetica, sans-serif font-family */
 * {
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* This class defines the style for the header section of the page */
 .header {
     background-color: darkcyan;
     color: lightcyan;
 }
 
+/* This class defines the style for the main heading of the page */
 .main-heading {
     text-align: center;
     padding: 50px;
@@ -17,12 +21,14 @@
     font-size: 300%;
 }
 
+/* This class defines the style for the sub-heading of the page */
 .sub-heading {
     text-align: center;
     padding: 20px 30px 30px 30px;
     font-size: 150%;
 }
 
+/* This class defines the style for the main content of the page */
 .content {
     padding: 30px;
     padding-top: 20px;
@@ -30,10 +36,13 @@
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(218, 215, 215);
     width: 500px;
-
 }
 
-.source-country, .salary, .target-country, .output {
+/* These classes define the style for input fields and drop-down menus */
+.source-country,
+.salary,
+.target-country,
+.output {
     padding: 10px;
     font-size: large;
 }
@@ -54,6 +63,7 @@ input {
     padding: 4px;
 }
 
+/* This class defines the style for the "Learn More" section of the page */
 .learn-more {
     padding: 20px;
     margin-left: 10px;
